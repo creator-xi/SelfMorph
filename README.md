@@ -1,8 +1,5 @@
 # Compute Has Shape: Self-Morphing the Internal Computation of Frozen LLMs
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
-
 SelfMorph decides the computational shape of a frozen LLM. The choice is one action in a shared morphology space:
 
 - **BASE**: the original forward pass.
