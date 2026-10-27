@@ -1,0 +1,198 @@
+{
+  "schema_version": "selfmorph-runtime-config-v1",
+  "model": {
+    "model_path_env": "SELFMORPH_MODEL_PATH",
+    "num_layers": 64,
+    "hidden_size": 5120,
+    "torch_dtype": "bfloat16",
+    "trust_remote_code": false
+  },
+  "action_space": {
+    "morphable_layer_range": [
+      0,
+      44
+    ],
+    "include_base": true,
+    "repeat_spans": [
+      [
+        33,
+        35
+      ],
+      [
+        31,
+        35
+      ],
+      [
+        30,
+        36
+      ],
+      [
+        26,
+        35
+      ]
+    ],
+    "repeat_counts": [
+      1,
+      2,
+      3
+    ],
+    "branch_spans": [
+      [
+        1,
+        10
+      ],
+      [
+        4,
+        7
+      ],
+      [
+        3,
+        8
+      ],
+      [
+        5,
+        7
+      ]
+    ],
+    "branch_counts": [
+      2,
+      4,
+      8
+    ],
+    "branch_cost_table": {
+      "2": 1.3,
+      "4": 1.6,
+      "6": 2.1,
+      "8": 2.6
+    },
+    "lambda_cost": 0.05,
+    "branch_sigma_max": 1.0,
+    "branch_method": "split_merge",
+    "branch_average": "prob",
+    "branch_l2_normalize": true,
+    "branch_scale_mode": "relative_l2",
+    "branch_seed": 42
+  },
+  "trajectory": {
+    "dense_layer_ids": [
+      20,
+      22,
+      24,
+      26,
+      28,
+      30,
+      32,
+      34,
+      36,
+      38
+    ],
+    "sparse_layer_ids": [
+      24,
+      28,
+      30,
+      32,
+      36
+    ],
+    "default_layer_set": "dense"
+  },
+  "domains": {
+    "dataset_domain_map": {
+      "bbh": "BBH Reasoning",
+      "arc_challenge": "Science Multiple Choice",
+      "openbookqa": "Science Multiple Choice",
+      "gsm8k": "Mathematics",
+      "math500": "Mathematics",
+      "twoWikiMultihop": "Multi-hop QA",
+      "hellaswag": "Commonsense Reasoning",
+      "truthfulqa_mc1": "Truthfulness",
+      "gpqa_diamond": "Graduate Science"
+    },
+    "id_domains_with_math": [
+      "BBH Reasoning",
+      "Science Multiple Choice",
+      "Mathematics"
+    ],
+    "id_domains_without_math": [
+      "BBH Reasoning",
+      "Science Multiple Choice"
+    ],
+    "id_math_datasets": [
+      "gsm8k",
+      "math500"
+    ],
+    "final_ood_domains": [
+      "Multi-hop QA",
+      "Commonsense Reasoning",
+      "Truthfulness",
+      "Graduate Science"
+    ],
+    "include_math_in_oracle": true
+  },
+  "selector": {
+    "encoder": "projection",
+    "proj_dim": 192,
+    "trunk": "attention",
+    "trunk_hidden": 384,
+    "trunk_depth": 0,
+    "head_variant": "hybrid",
+    "head_hidden_dim": 48,
+    "layer_set": "dense",
+    "dropout": 0.05,
+    "lr": 0.0008,
+    "weight_decay": 0.0,
+    "batch_size": 256,
+    "effective_batch_size": 256,
+    "micro_batch_size": 128,
+    "max_epochs": 50,
+    "patience": 8,
+    "checkpoint_selection": "best",
+    "target_mode": "softmax",
+    "temperature_mode": "fixed",
+    "temperature_fixed": 0.15,
+    "temperature_cosine_start": 0.15,
+    "temperature_cosine_end": 0.15,
+    "schedule_epochs": 50,
+    "seed": 42,
+    "prenorm_mode": "rms_gain",
+    "lr_schedule": "cosine_warmup",
+    "lr_warmup_frac": 0.05,
+    "lr_min_scale": 0.02,
+    "weight_decay_exempt_norm_bias": true,
+    "attention_d_model": 64,
+    "attention_n_heads": 2,
+    "attention_n_blocks": 1,
+    "selector_checkpoint": "artifacts/checkpoints/qwen35_27b/best_checkpoint.pt",
+    "prenorm_gain_path": "resources/base_model_prenorm/qwen35_27b_input_layernorm_gain.pt",
+    "expected_trajectory_layer_ids": [
+      20,
+      22,
+      24,
+      26,
+      28,
+      30,
+      32,
+      34,
+      36,
+      38
+    ]
+  },
+  "selection": {
+    "score_margin_threshold": 0.005,
+    "reward_margin_threshold": 0.005,
+    "worst_domain_reward_margin_threshold": -0.01,
+    "benchmark_double_wins_threshold": {
+      "with_math": 4,
+      "without_math": 3
+    }
+  },
+  "paths": {
+    "dataset_root_env": "SELFMORPH_DATASET_ROOT",
+    "eval_dataset_root_env": "SELFMORPH_EVAL_DATASET_ROOT",
+    "artifacts_dir_env": "SELFMORPH_ARTIFACTS_DIR",
+    "oracle_dir_env": "SELFMORPH_ORACLE_DIR",
+    "training_data_dir_env": "SELFMORPH_TRAINING_DATA_DIR",
+    "checkpoint_dir_env": "SELFMORPH_CHECKPOINT_DIR",
+    "results_dir_env": "SELFMORPH_RESULTS_DIR",
+    "nltk_data_dir_env": "SELFMORPH_NLTK_DATA"
+  }
+}
