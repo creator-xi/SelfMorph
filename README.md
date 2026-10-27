@@ -42,7 +42,7 @@ The evaluated benchmarks use these sources and this local layout:
 
 | Benchmark | Source | Local path |
 | :--- | :--- | :--- |
-| BBH, 19 subtasks | [lukaemon/bbh](https://huggingface.co/datasets/lukaemon/bbh) | `bbh_full/<subtask>/test-00000-of-00001.parquet` |
+| BBH | [lukaemon/bbh](https://huggingface.co/datasets/lukaemon/bbh) | `bbh_full/<subtask>/test-00000-of-00001.parquet` |
 | ARC-Challenge | [allenai/ai2_arc](https://huggingface.co/datasets/allenai/ai2_arc), config `ARC-Challenge` | `arc_challenge/{train,test,validation}.parquet` |
 | OpenBookQA | [allenai/openbookqa](https://huggingface.co/datasets/allenai/openbookqa) | `openbookqa/{train,test,validation}.parquet` |
 | GSM8K | [openai/gsm8k](https://huggingface.co/datasets/openai/gsm8k), config `main` | `gsm8k/{train,test}.parquet` |
